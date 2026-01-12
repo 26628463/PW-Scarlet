@@ -28,18 +28,61 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     
-    - name: Basic test
-      id: basic-test
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Ejercicio 1 - Crear carpetas
+      id: ejercicio-1
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Basic test
-        setup-command: npm install
-        command: npm test
+        test-name: Ejercicio 1 - Crear carpetas
+        command: npx jest tests/ejercicio/1-crear-carpetas.test.js
         timeout: 10
-        max-score: 5
+        max-score: 20
+    
+    - name: Ejercicio 2 - Punto de venta online
+      id: ejercicio-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ejercicio 2 - Punto de venta online
+        command: npx jest tests/ejercicio/2-crear-carpetas-punto-venta-online.test.js
+        timeout: 10
+        max-score: 20
+    
+    - name: Ejercicio 3 - Estructura HTML
+      id: ejercicio-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ejercicio 3 - Estructura HTML
+        command: npx jest tests/ejercicio/3-crear-index.test.js
+        timeout: 10
+        max-score: 20
+    
+    - name: Ejercicio 4 - Estudiantes
+      id: ejercicio-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ejercicio 4 - Estudiantes
+        command: npx jest tests/ejercicio/4-crear-estudiantes.test.js
+        timeout: 10
+        max-score: 20
+    
+    - name: Ejercicio 5 - Rutas de imágenes
+      id: ejercicio-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Ejercicio 5 - Rutas de imágenes
+        command: npx jest tests/ejercicio/5-rutas-imagenes.test.js
+        timeout: 10
+        max-score: 20
+    
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        BASIC-TEST_RESULTS: "${{steps.basic-test.outputs.result}}"
+        EJERCICIO-1_RESULTS: "${{steps.ejercicio-1.outputs.result}}"
+        EJERCICIO-2_RESULTS: "${{steps.ejercicio-2.outputs.result}}"
+        EJERCICIO-3_RESULTS: "${{steps.ejercicio-3.outputs.result}}"
+        EJERCICIO-4_RESULTS: "${{steps.ejercicio-4.outputs.result}}"
+        EJERCICIO-5_RESULTS: "${{steps.ejercicio-5.outputs.result}}"
       with:
-        runners: basic-test
+        runners: ejercicio-1,ejercicio-2,ejercicio-3,ejercicio-4,ejercicio-5
