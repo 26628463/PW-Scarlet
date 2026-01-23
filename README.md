@@ -26,8 +26,8 @@ Para visualizar tus archivos HTML en el navegador mientras trabajas:
 
 ## Alumno
 
-#### Escriba su nombre completo aquí.
-##### Escriba su matrícula aquí.
+#### Scarlet Maris Campusano
+##### 2024-2506
 
 ## Estructura del Proyecto
 
